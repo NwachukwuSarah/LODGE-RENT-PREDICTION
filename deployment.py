@@ -12,10 +12,10 @@ def prediction():
     predictdata = pd.DataFrame.from_records([predictdict])
     
     # Loading the label encoder and the model
-    with open('Encoder', 'wb') as f:
-        pickle.dump(ohe, f)
-    with open('best_lodge_prediction_model', 'wb') as f:
-        pickle.dump(model, f)
+    with open('Encoder', 'rb') as f:
+        ohe = pickle.load(f)
+    with open('best_lodge_prediction_model', 'rb') as f:
+        model = pickle.load(f)
     feature_names = ohe.get_feature_names_out()
     
     # Predicting the rent, setting the ranges and writing it to my streamlit webpage
