@@ -13,7 +13,7 @@ def prediction():
     
     # Loading the label encoder and the model
     with open('Encoder', 'wb') as f:
-        pickle.dump(ohe', f)
+        pickle.dump(ohe, f)
     with open('best_lodge_prediction_model', 'wb') as f:
         pickle.dump(model, f)
     feature_names = ohe.get_feature_names_out()
