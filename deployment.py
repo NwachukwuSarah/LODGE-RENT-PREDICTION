@@ -1,6 +1,6 @@
 # Importing needed libraries
 import streamlit as st
-import joblib
+import pickle
 import math
 import pandas as pd
 
@@ -12,8 +12,10 @@ def prediction():
     predictdata = pd.DataFrame.from_records([predictdict])
     
     # Loading the label encoder and the model
-    ohe = joblib.load('Encoder')
-    model = joblib.load('best_lodge_prediction_model')
+    with open('Encoder', 'wb') as f:
+        pickle.dump(ohe', f)
+    with open('best_lodge_prediction_model', 'wb') as f:
+        pickle.dump(model, f)
     feature_names = ohe.get_feature_names_out()
     
     # Predicting the rent, setting the ranges and writing it to my streamlit webpage
