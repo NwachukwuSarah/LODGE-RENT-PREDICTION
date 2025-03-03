@@ -1,6 +1,6 @@
 # Importing needed libraries
 import streamlit as st
-import joblib
+import pickle
 import math
 import pandas as pd
 
