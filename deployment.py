@@ -3,6 +3,7 @@ import streamlit as st
 import joblib
 import math
 import pandas as pd
+from sklearn.preprocessing import OneHotEncoder
 
 
 # Function to predict yearly rent
@@ -14,7 +15,7 @@ def prediction():
     # Loading the label encoder and the model
     ohe = joblib.load('Encoder')
     model = joblib.load('best_lodge_prediction_model')
-    feature_names = ohe.get_feature_names_out()
+    feature_names = OneHotEncoder(drop='first', sparse_output = False).get_feature_names_out()
     
     # Predicting the rent, setting the ranges and writing it to my streamlit webpage
     predictdata = pd.DataFrame(ohe.transform(predictdata), columns=feature_names)
